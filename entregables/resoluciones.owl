@@ -412,6 +412,7 @@
     <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Organizacion -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Organizacion">
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Persona"/>
         <rdfs:comment>Son las organizaciones (Universidades, Institutos, Comisiones, etc) que participan en una resolución, ya sea como solicitantes o como involucrados. De las organizaciones interesa conocer la estructura jerárquica entre ellas que se define mediante la propiedad esParteDe.</rdfs:comment>
         <rdfs:label>Organización</rdfs:label>
     </owl:Class>
