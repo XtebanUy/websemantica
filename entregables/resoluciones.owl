@@ -1,0 +1,567 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/fing/ontologies/2018/resoluciones"
+     xml:base="http://www.semanticweb.org/fing/ontologies/2018/resoluciones"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:res="http://www.semanticweb.org/fing/ontologies/2018/resoluciones/"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:resvocab="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#accionInvolucrados -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#accionInvolucrados">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Accion"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Entidad"/>
+        <rdfs:comment>Relaciona una acción con las personas u organizaciones afectadas por esta</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistente -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistente">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Repartido"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Persona"/>
+        <rdfs:comment>Relaciona un Repartido con las Personas que asistieron a la sesión correspondiente. Se divide en subpropiedades de acuerdo al Orden por el que se asistió.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistenteDecano -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistenteDecano">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistente"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Repartido"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Persona"/>
+        <rdfs:comment>Relaciona un Repartido con la Persona que asistió como Decano (o Decano Suplente) a la sesión correspondiente .</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistenteDocentes -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistenteDocentes">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistente"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Repartido"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Persona"/>
+        <rdfs:comment>Relaciona un Repartido con las Personas que asistieron a la sesión correspondiente por el Orden Docentes.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistenteEgresados -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistenteEgresados">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistente"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Repartido"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Persona"/>
+        <rdfs:comment>Relaciona un Repartido con las Personas que asistieron a la sesión correspondiente por el Orden Egresados.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistenteEstudiantil -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistenteEstudiantil">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistente"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Repartido"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Persona"/>
+        <rdfs:comment>Relaciona un Repartido con las Personas que asistieron a la sesión correspondiente por el Orden Estudiantil.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#esParteDe -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#esParteDe">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Organizacion"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Organizacion"/>
+        <rdfs:comment>Relaciona una Organización con otra de la que forma parte (por ejemplo, un Instituto con la Facultad correspondiente, o una Facultad con la Universidad).</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#repartidoInvolucrados -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#repartidoInvolucrados">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#repartidoResolucion"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#resolucionAcciones"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#accionInvolucrados"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment>Relaciona un repartido con todas las personas afectadas por las acciones determinadas en las resoluciones de ese repartido.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#repartidoResolucion -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#repartidoResolucion">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Repartido"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Resolucion"/>
+        <rdfs:comment>Se relaciona un Repartido con las Resoluciones adoptadas en la sesión correspondiente.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#resolucionAcciones -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#resolucionAcciones">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Resolucion"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Accion"/>
+        <rdfs:comment>Se relaciona una resolución con las acciones que se desprenden de esta.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#resolucionDocumentos -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#resolucionDocumentos">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Resolucion"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Documento"/>
+        <rdfs:comment>Relaciona una Resolución con los Documentos (antecedentes) que se tuvieron en consideración al tratar el tema.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#resolucionExpediente -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#resolucionExpediente">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Resolucion"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Expediente"/>
+        <rdfs:comment>Relaciona una Resolución con cada expediente relacionado, si corresponde.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#resolucionSolicitante -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#resolucionSolicitante">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Resolucion"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Entidad"/>
+        <rdfs:comment>Relaciona una Resolución con la Persona u Organización que solicitaron o motivaron el tratamiento del tema en el Consejo.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#tieneAutor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#tieneAutor">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Documento"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Entidad"/>
+        <rdfs:comment>Se relaciona un Documento (antecedente) con la Persona u Organización considerados autores del mismo. Si un Documento es de tipo Solicitud, el autor será quien realizó la solicitud; si es un Informe se tratará de quien redactó/presentó dicho informe; para el caso de Normativa no corresponde indicar un autor.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#cantAsistentesSesion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#cantAsistentesSesion">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Repartido"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label>Cantidad de asistentes a la Sesión</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#cantVotosResolucion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#cantVotosResolucion">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Resolucion"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label>Cantidad de votos de la resolución</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#descripcionAccion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#descripcionAccion">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Accion"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Texto completo que describe la acción.</rdfs:comment>
+        <rdfs:label>Descripción de la acción</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#fecha -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#fecha">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:label>Fecha</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#infoSesion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#infoSesion">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Repartido"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Indica si es una sesión Ordinaria o Extraordinaria.</rdfs:comment>
+        <rdfs:label>Información de la Sesión</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#nombre -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#nombre">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>Nombre</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#nroExpediente -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#nroExpediente">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Expediente"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Número identificatorio del expediente. Permite localizar el expediente en Expe.</rdfs:comment>
+        <rdfs:label>Nro. de Expediente</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#nroRepartido -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#nroRepartido">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Repartido"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>Nro. del repartido</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#nroResolucion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#nroResolucion">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Resolucion"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>Nro. de la Resolución</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#temaDocumento -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#temaDocumento">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Documento"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Descripción del tema que trata el documento/antecedente. En caso de tratarse de un documento físico (tipo Informe, por ejemplo)  puede indicarse el título del mismo.</rdfs:comment>
+        <rdfs:label>Tema del documento.</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#tipoDocumento -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#tipoDocumento">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Documento"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Indica el tipo de antecedente de qué se trata. Ejemplos de posibles valores: solicitud, informe, actuación, normativa, asesoramiento, etc.</rdfs:comment>
+        <rdfs:label>Tipo de Antecedente</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#tipoOrganizacion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#tipoOrganizacion">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Organizacion"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Indica qué tipo de Organización es. Por ejemplo: Universidad, Facultad, Instituto, Comisión, etc.</rdfs:comment>
+        <rdfs:label>Tipo de Organización</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#uriExpediente -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#uriExpediente">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Expediente"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Uri de la página donde están los datos del Expediente. Típicamente será una página del sitio http://ee-web.seciu.edu.uy/</rdfs:comment>
+        <rdfs:label>Uri del expediente</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#urlPagRepartido -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#urlPagRepartido">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Repartido"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Url de la página del sitio expe.edu.uy donde se describe el repartido</rdfs:comment>
+        <rdfs:label>Url página del Repartido</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Accion -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Accion">
+        <rdfs:comment>Conjunto de acciones que se determina realizar en una resolución. Es un dato de interés la relación entre cada acción  y las personas u organizaciones afectadas por esta.</rdfs:comment>
+        <rdfs:label>Acción</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Documento -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Documento">
+        <rdfs:comment>Los antecedentes de una resolución son representados como Documentos generados por una Organización o una Persona. Las propiedades de un Documento permiten indicar quien es el autor del mismo, que tipo de documento es (solicitud, informe, actuación, normativa, etc), y el tema o descripción.</rdfs:comment>
+        <rdfs:label>Documento (antecedente)</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Entidad -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Entidad">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Organizacion"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Persona"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Expediente -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Expediente">
+        <rdfs:comment>Es el conjunto de Expedientes asociados a alguna resolución. Cada expediente se identifica por su número y puede indicarse la url de la página para consultar su contenido. En general una resolución está asociada a uno o dos expedientes. Hay casos en que la resolución no refiere a un expediente.</rdfs:comment>
+        <rdfs:label>Expediente</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Organizacion -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Organizacion">
+        <rdfs:comment>Son las organizaciones (Universidades, Institutos, Comisiones, etc) que participan en una resolución, ya sea como solicitantes o como involucrados. De las organizaciones interesa conocer la estructura jerárquica entre ellas que se define mediante la propiedad esParteDe.</rdfs:comment>
+        <rdfs:label>Organización</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Persona -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Persona">
+        <rdfs:comment>El conjunto de personas mencionadas en un repartido o resolución. Pueden ser asistentes a la reunión del Consejo, solicitantes de una resolución, autores de un documento de antecedente, o involucrados en una acción.</rdfs:comment>
+        <rdfs:label>Persona</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Repartido -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Repartido">
+        <rdfs:comment>Conjunto de los Repartidos. Cada repartido se corresponde con una sesión del Consejo, y está asociado a las resoluciones que se toman en dicha sesión. Interesa conocer quienes asisitieron a la reunión.</rdfs:comment>
+        <rdfs:label>Repartido</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Resolucion -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Resolucion">
+        <rdfs:comment>Conjunto de las Resoluciones adoptadas en las sesiones del Consejo (Repartidos). Una resolución está asociada al repartido/sesión donde se originó. Cada resolución se describe por: quien la solicitó (Organismo o Persona), qué antecedentes (Documentos) se tuvieron en cuenta y qué acciones se decidieron.</rdfs:comment>
+        <rdfs:label>Resolución</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgComConvenios -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgComConvenios">
+        <rdf:type rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Organizacion"/>
+        <resvocab:esParteDe rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgFING"/>
+        <resvocab:nombre>Comisión de Convenios</resvocab:nombre>
+        <resvocab:tipoOrganizacion>Comisión</resvocab:tipoOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgComINCO -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgComINCO">
+        <rdf:type rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Organizacion"/>
+        <resvocab:esParteDe rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgINCO"/>
+        <resvocab:nombre>Comisión del Instituto de Computación</resvocab:nombre>
+        <resvocab:tipoOrganizacion>Comisión</resvocab:tipoOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgComTecnicaMixtaSG -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgComTecnicaMixtaSG">
+        <rdf:type rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Organizacion"/>
+        <resvocab:nombre>Comisión Técnica Mixta de Salto Grande</resvocab:nombre>
+        <resvocab:tipoOrganizacion>Comisión</resvocab:tipoOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgDirGralRelCoop -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgDirGralRelCoop">
+        <rdf:type rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Organizacion"/>
+        <resvocab:esParteDe rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgUdelaR"/>
+        <resvocab:nombre>Direccion General de Relaciones y Cooperacion</resvocab:nombre>
+        <resvocab:tipoOrganizacion>Dirección</resvocab:tipoOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgFING -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgFING">
+        <rdf:type rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Organizacion"/>
+        <resvocab:esParteDe rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgUdelaR"/>
+        <resvocab:nombre>Facultad de Ingeniería</resvocab:nombre>
+        <resvocab:tipoOrganizacion>Facultad</resvocab:tipoOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgIMFIA -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgIMFIA">
+        <rdf:type rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Organizacion"/>
+        <resvocab:esParteDe rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgFING"/>
+        <resvocab:nombre>Instituto de Mecanica de los Fluidos e Ingenieria Ambiental (IMFIA)</resvocab:nombre>
+        <resvocab:tipoOrganizacion>Instituto</resvocab:tipoOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgINCO -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgINCO">
+        <rdf:type rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Organizacion"/>
+        <resvocab:esParteDe rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgFING"/>
+        <resvocab:nombre>Instituto de Computacion</resvocab:nombre>
+        <resvocab:tipoOrganizacion>Instituto</resvocab:tipoOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgUdelaR -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones/OrgUdelaR">
+        <rdf:type rdf:resource="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#Organizacion"/>
+        <resvocab:nombre>Universidad de la Republica</resvocab:nombre>
+        <resvocab:tipoOrganizacion>Universidad</resvocab:tipoOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistenteDecano"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistenteDocentes"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistenteEgresados"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/fing/ontologies/2018/resoluciones#asistenteEstudiantil"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi -->
+

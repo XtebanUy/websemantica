@@ -1,0 +1,7 @@
+select ?nroExp (count(?r) as ?cantRes) 
+{graph base:final 
+    {?r resvocab:resolucionExpediente ?e.
+    ?e resvocab:nroExpediente ?nroExp}
+} group by ?nroExp
+HAVING (?cantRes>5)
+order by DESC(?cantRes)

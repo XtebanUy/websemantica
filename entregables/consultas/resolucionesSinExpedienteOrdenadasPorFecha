@@ -1,0 +1,9 @@
+select distinct ?f ?rep ?n
+from base:final
+{
+    ?r a resvocab:Resolucion.
+    ?rep resvocab:repartidoResolucion ?r.
+    ?rep resvocab:fecha ?f.
+    ?r resvocab:nroResolucion ?n.
+    FILTER NOT EXISTS {?r resvocab:resolucionExpediente ?e}
+} order by ?f

@@ -1,0 +1,174 @@
+## Inserto repartidos y sus propiedades
+INSERT { GRAPH base:final
+  {?repf a resvocab:Repartido.
+   ?repf resvocab:nroRepartido ?nro.
+   ?repf resvocab:infoSesion ?i.
+   ?repf resvocab:fecha ?f.
+   ?repf resvocab:urlPagRepartido ?u
+}
+}
+where {graph base:intermedio
+       {?rep rdf:type vocab:Repartido.
+        ?rep vocab:numero ?nro.
+        ?rep vocab:info_de_la_sesion ?i.
+        ?rep vocab:fecha_hora ?f.
+	  ?rep vocab:url ?u.
+	  BIND (IRI(replace(str(?rep), str(base:), str(res:))) AS ?repf)
+       }
+ };
+
+
+## Insertamos los asistentes
+INSERT
+{   GRAPH base:final {
+      ?piri a resvocab:Persona.
+      ?piri resvocab:nombre ?np.
+      ?siri ?rel ?piri.
+  }
+ }
+WHERE
+  {graph base:intermedio
+   {
+    {{?s vocab:asistentes ?a.
+     ?a vocab:decano ?p.
+     FILTER(?p!="") }  
+     BIND(resvocab:asistenteDecano as ?rel)
+    }
+    UNION
+    {{?s vocab:asistentes ?a.
+     ?a vocab:ordenEstudiantil ?p.
+     FILTER(?p!="") }  
+    BIND(resvocab:asistenteEstudiantil as ?rel)
+    }
+    UNION
+        {{?s vocab:asistentes ?a.
+     ?a vocab:ordenDocente ?p.
+     FILTER(?p!="") }  
+    BIND(resvocab:asistenteDocentes as ?rel)
+    }
+    UNION
+      {{?s vocab:asistentes ?a.
+     ?a vocab:ordenEgresado ?p.
+     FILTER(?p!="") }  
+    BIND(resvocab:asistenteEgresados as ?rel)
+    }
+    BIND(stardog:ExtraerNombre(?p) as ?np)
+    BIND(IRI(concat(str(res:), "Persona", ENCODE_FOR_URI(?np))) as ?piri)
+    BIND(IRI(replace(str(?s), str(base:), str(res:)))  AS ?siri)
+} };
+
+
+## Solo insert de la cantidad de asistentes
+#INSERT {graph base:final { ?rep resvocab:cantAsistentesSesion ?cant }}
+#WHERE {graph base:final {
+#       SELECT ?rep (count(?a) as ?cant)
+#       where  {?rep a resvocab:Repartido.
+# 	           ?rep resvocab:asistente ?a.
+#               }
+#       group by ?rep
+#       }
+#};
+
+## Inserto cantidad de asistentes reemplazando registro existente
+## No es necesario convertir las uris porque trabajamos siempre en el grafo final
+WITH base:final
+DELETE { ?rep resvocab:cantAsistentesSesion ?c }
+INSERT { ?rep resvocab:cantAsistentesSesion ?cant }
+WHERE {
+        { SELECT ?rep (count(?a) as ?cant)
+            where  {?rep a resvocab:Repartido.
+                    ?rep resvocab:asistente ?a.
+                    } 
+                    group by ?rep
+         }
+        OPTIONAL {?rep resvocab:cantAsistentesSesion ?c}  
+       };
+
+
+## Inserto resoluciones 
+INSERT { GRAPH base:final
+  {?resf a resvocab:Resolucion.
+   ?resf resvocab:nroResolucion ?n.
+   ?rf resvocab:repartidoResolucion ?resf.
+  }
+ } 
+where {graph base:intermedio
+       {?r vocab:resoluciones ?res.
+        ?res a vocab:Resolucion.
+        ?res vocab:numero ?n.
+        BIND (IRI(replace(str(?res), str(base:), str(res:)))  AS ?resf)
+        BIND (IRI(replace(str(?r), str(base:), str(res:)))  AS ?rf)
+      } 
+ };
+
+
+## Inserto expedientes
+INSERT {graph base:final
+       {?e2 a resvocab:Expediente.
+        ?e2 resvocab:nroExpediente ?e.
+        ?r2 resvocab:resolucionExpediente ?e2.
+       }
+      }
+WHERE {graph base:intermedio
+      {?res vocab:expediente ?e.
+      FILTER (?e!="-" && CONTAINS(?e,"-"))
+      }
+      BIND(IRI(replace(str(?res),str(base:),str(res:))) as ?r2)
+      BIND(IRI(concat(str(res:),'Expediente',encode_for_uri(?e))) as ?e2)
+};
+
+##Arreglo de datos que pueden estar repetidos
+
+#Personas con el mismo nombre, se marcan como owl:sameAs
+#Primero hacemos procesamiento básico de los nombres (substrings, tildes, mayúsculas)
+# para igualar los que corresponden a la misma persona
+with base:final
+DELETE {?p resvocab:nombre ?nomp.}
+INSERT {?p resvocab:nombre ?nomq.}
+where {
+    ?p a resvocab:Persona.
+    ?p resvocab:nombre ?nomp.
+    ?q a resvocab:Persona.
+    ?q resvocab:nombre ?nomq. 
+    FILTER(?p!=?q && CONTAINS(?nomp,?nomq))
+    };
+
+WITH base:final
+DELETE {?p resvocab:nombre ?nomp.}
+INSERT {?p resvocab:nombre ?nomq.}
+where {
+    ?p a resvocab:Persona.
+    ?p resvocab:nombre ?nomp.
+    ?q a resvocab:Persona.
+    ?q resvocab:nombre ?nomq. 
+    FILTER(?p!=?q && LCASE(?nomp)=LCASE(?nomq) && ?nomp<?nomq)
+    };
+
+WITH base:final
+DELETE {?p resvocab:nombre ?nomp.}
+INSERT {?p resvocab:nombre ?nomq.}
+where {
+    ?p a resvocab:Persona.
+    ?p resvocab:nombre ?nomp.
+    ?q a resvocab:Persona.
+    ?q resvocab:nombre ?nomq.  
+    FILTER(?p!=?q && ?nomp<?nomq &&
+        REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(LCASE(?nomp),'á','a'),'í','i'),'ó','o'),'é','e'),'ú','u')=REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(LCASE(?nomq),'á','a'),'í','i'),'ó','o'),'é','e'),'ú','u') 
+        )
+    FILTER NOT EXISTS {?t a resvocab:Persona.
+                       ?t resvocab:nombre ?nomt. 
+                       FILTER(?p!=?t && ?q!=?t && ?nomq<?nomt &&
+                        REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(LCASE(?nomp),'á','a'),'í','i'),'ó','o'),'é','e'),'ú','u')=REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(LCASE(?nomt),'á','a'),'í','i'),'ó','o'),'é','e'),'ú','u') 
+                       )
+             } 
+    };
+
+with base:final
+INSERT {?p owl:sameAs ?q.}
+where {
+    ?p a resvocab:Persona.
+    ?p resvocab:nombre ?nomp.
+    ?q a resvocab:Persona.
+    ?q resvocab:nombre ?nomq. 
+      FILTER(?p!=?q && ?nomp=?nomq && str(?p)<str(?q))
+    };

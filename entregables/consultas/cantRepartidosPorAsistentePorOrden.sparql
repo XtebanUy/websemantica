@@ -1,0 +1,9 @@
+select ?nom ?orden (count(?rep) as ?c) (MIN(?f) as ?ini) (MAX(?f) as ?fin)
+{graph base:final 
+    {?rep ?orden ?p.
+    ?p a resvocab:Persona.
+    ?rep resvocab:fecha ?f.
+    ?p resvocab:nombre ?nom.
+    FILTER(?orden in (resvocab:asistenteDecano,resvocab:asistenteDocentes, resvocab:asistenteEstudiantil, resvocab:asistenteEgresados))
+} } group by ?nom ?orden 
+order by ?orden DESC(?c)

@@ -1,0 +1,19 @@
+#Datos de las resoluciones relacionadas con el expediente que mas aparece
+select ?f ?nrep ?nres (?n as ?nroExp)
+WHERE {graph base:final
+{  ?r resvocab:resolucionExpediente ?e.
+   ?rep resvocab:repartidoResolucion ?r.
+   ?rep resvocab:fecha ?f.
+   ?rep resvocab:nroRepartido ?nrep.
+   ?r resvocab:nroResolucion ?nres. 
+    {
+    select ?e ?n (count(?r) as ?cant) 
+    WHERE {graph base:final 
+        {?r resvocab:resolucionExpediente ?e.
+        ?e resvocab:nroExpediente ?n.
+        }
+    } group by ?e ?n
+    order by DESC(?cant)
+    LIMIT 1
+   }
+}} order by DESC(?f)

@@ -1,0 +1,13 @@
+SELECT ?a ?i (ROUND(AVG(?c)) as ?prom)
+where {graph base:final 
+             {
+             ?rep resvocab:cantAsistentesSesion ?c.
+             ?rep resvocab:infoSesion ?i.
+              ?rep resvocab:fecha ?f.
+              BIND(STRDT(?f,xsd:dateTime) as ?ff)
+              BIND(YEAR(?ff) as ?a)
+            }
+        }  group by ?a ?i
+        order by ?a ?i
+
+       

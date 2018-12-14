@@ -1,0 +1,12 @@
+select distinct ?orden1 ?nom
+{graph base:final 
+   {?rep1 ?orden1 ?p.
+    ?p a resvocab:Persona.
+    ?p resvocab:nombre ?nom.
+    FILTER(?orden1 in (resvocab:asistenteDecano,resvocab:asistenteDocentes, resvocab:asistenteEstudiantil, resvocab:asistenteEgresados))
+    FILTER EXISTS {?r2 ?orden2 ?p.
+                   ?p a resvocab:Persona.
+                   FILTER(?orden2 in (resvocab:asistenteDecano,resvocab:asistenteDocentes, resvocab:asistenteEstudiantil, resvocab:asistenteEgresados))
+                   FILTER(?orden2 != ?orden1)
+                   }
+} } 
