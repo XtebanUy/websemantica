@@ -1,0 +1,120 @@
+<div class="col-xs-12" style="height:20px;"></div>
+<div style="width: auto; height: 100%"> 
+  <div  *ngIf="resolucion" class="">
+    <!-- <div class="col-xs-12" style="height:20px;"></div> -->
+    <h5 class="card-subtitle">Datos de la Resolución:</h5>
+    <div class="col-xs-12" style="height:20px;"></div>
+    <h6 class="card-subtitle mb-2 text-muted">{{resolucion.uri}}</h6>
+    <div class="col-xs-12" style="height:10px;"></div>
+    <div class="col-xs-12" style="height:20px;"></div>
+    <h5 class="card-subtitle">Texto de la Resolución:</h5>
+    <div class="col-xs-12" style="height:20px;"></div>
+    <div class="alert alert-primary" role="alert">
+        {{resolucion.texto}}
+    </div>    
+    <div class="col-xs-12" style="height:10px;"></div>
+    <div class="btn-group" role="group" aria-label="Basic example">        
+        <button type="button" class="btn btn-outline-primary btn-sm" (click)="isCollapsed = !isCollapsed"  [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+          Nueva Persona
+        </button>
+        <button type="button" class="btn btn-outline-primary btn-sm" (click)="isCollapsedOrg = !isCollapsedOrg"  [attr.aria-expanded]="!isCollapsedOrg" aria-controls="collapseExampleOrg">
+          Nueva Organización
+        </button> 
+      </div>    
+      <div class="col-xs-12" style="height:30px;"></div>   
+      <div id="collapseExample" [ngbCollapse]="isCollapsed">
+          <div class="card">
+            <div class="card-body">
+              <form>
+                  <div class="form-row">
+                     <div class="form-group col-md-12">
+                        <label for="exampleInputEmail1">Nombre Persona</label>
+                        <input type="text" class="form-control  form-control-sm" #inputPersonaNom aria-describedby="emailHelp" placeholder="Ingrese nombre de la Persona"> 
+                    </div>
+                  </div>
+                  <button type="reset" (click)="onClickPersona(inputPersonaNom.value)" class="btn btn-outline-primary btn-sm">Ingresar Persona</button>                 
+               </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12" style="height:20px;"></div>
+        <div id="collapseExampleOrg" [ngbCollapse]="isCollapsedOrg">
+          <div class="card">
+            <div class="card-body">
+                <form class="needs-validation">
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="exampleInputEmail1">Nombre Organización</label>
+                        <input type="text" class="form-control  form-control-sm" #inputOrgNom aria-describedby="emailHelp" placeholder="Ingrese nombre de la Organización">        
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="exampleInputPassword1">Tipo Organización</label>
+                        <input id="typeahead-basic" type="text" class="form-control form-control-sm" #inputDocumentoAutor [(ngModel)]="modelTpo"  [ngModelOptions]="{standalone: true}" [resultFormatter]="formatter" [inputFormatter]="formatter" [ngbTypeahead]="searchTipo" placeholder="Ingrese el tipo" />
+                        <!-- <input type="text" class="form-control  form-control-sm" #inputOrgTipo placeholder="Ingrese el tipo de la Organización"> -->
+                      </div>
+                      <div class="form-group col-md-3">
+                          <label for="exampleInputPassword1">Parte de</label>
+                          <input id="typeahead-basic" type="text" class="form-control form-control-sm" #inputDocumentoAutor [(ngModel)]="modelOrg"  [ngModelOptions]="{standalone: true}" [resultFormatter]="formatter" [inputFormatter]="formatter" [ngbTypeahead]="searchOrg" placeholder="Ingrese Parte de"/>
+                          <!-- <input type="text" class="form-control  form-control-sm" #inputOrgTipo placeholder="Ingrese la jerarquía de la Organización"> -->
+                        </div>
+                    </div>      
+                    <button type="reset" (click)="onClickOrg(inputOrgNom.value,modelTpo.b.value,modelOrg.a.value)" class="btn btn-outline-primary btn-sm">Ingresar Organización</button>
+                  </form> 
+            </div>
+          </div>
+      </div>  
+    <div class="col-xs-12" style="height:20px;"></div>    
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="exampleInputEmail1">Tema Antecedente</label>
+          <input type="text" class="form-control  form-control-sm" #inputDocumentoTema aria-describedby="emailHelp" placeholder="Ingrese el tema del Antecedente">        
+        </div>       
+      </div>
+      <div class="form-row">
+         <div class="form-group col-md-6">
+              <label for="exampleInputPassword1">Tipo Antecedente</label>
+              <input type="text" class="form-control  form-control-sm" #inputDocumentoTipo placeholder="Ingrese el tipo del Antecedente">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="app-detalle-resolucionc">Autor Antecedente</label>
+          <input id="typeahead-basic" type="text" class="form-control form-control-sm" #inputDocumentoAutor [(ngModel)]="model"  [ngModelOptions]="{standalone: true}" [resultFormatter]="formatter" [inputFormatter]="formatter" [ngbTypeahead]="search" placeholder="Ingrese el nombre de autor del Antecedente"/>
+         <!-- <pre>Model: {{ model | json }}</pre>   -->
+        </div>         
+      </div>
+      <button type="reset" (click)="onClickDocumento(inputDocumentoTema.value,model.a.value,inputDocumentoTipo.value)" class="btn btn-primary btn-sm">Ingresar Antecedente</button>
+    </form>
+    <div class="col-xs-12" style="height:20px;"></div>
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="exampleInputEmail1">Tema Acción</label>
+          <input type="text" class="form-control  form-control-sm" #inputAccionDsc aria-describedby="emailHelp" placeholder="Ingrese el tema del documento">        
+        </div>
+        <div class="form-group col-md-6">
+          <label for="exampleInputPassword1">Involucrado Acción</label>
+          <input id="typeahead-basic" type="text" class="form-control form-control-sm" #inputDocumentoAutor [(ngModel)]="modelInv"  [ngModelOptions]="{standalone: true}" [resultFormatter]="formatter" [inputFormatter]="formatter" [ngbTypeahead]="search" placeholder="Ingrese el nombre de autor del documento"/>
+        </div>
+      </div>      
+      <button type="reset" (click)="onClickAccion(inputAccionDsc.value,modelInv.a.value)" class="btn btn-primary btn-sm">Ingresar Acción</button>
+    </form>    
+  </div>   
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

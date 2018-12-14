@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fing.edu.uy</groupId>
+  <artifactId>stardogFunctions</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Archetype - spacedogFunctions</name>
+  <url>http://maven.apache.org</url>
+  
+
+<repositories>
+   <repository>
+     <id>stardog-public</id>
+     <url>https://maven.stardog.com</url>
+   </repository>
+</repositories>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+          <configuration>
+            <!-- put your configurations here -->
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  
+  <dependencies>
+  
+
+<dependency>
+  <groupId>com.complexible.stardog</groupId>
+  <artifactId>server</artifactId>
+  <version>6.0.0</version>
+  <type>pom</type>
+</dependency>
+
+  </dependencies>
+</project>

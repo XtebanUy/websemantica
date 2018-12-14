@@ -1,0 +1,36 @@
+ <!-- <ul class="list-group list-group-flush">
+    <a href="#" *ngFor="let resolucion of resoluciones" class="list-group-item list-group-item-action flex-column align-items-start">
+      <li class="list-group-item" #res (click)="onClickResolucion(resolucion)">{{resolucion.n.value}}</li>
+    </a>
+</ul> 
+<app-detalle-resolucion [resolucion]="selectedResolucion"></app-detalle-resolucion>   -->
+<div class="col-xs-12" style="height:20px;"></div>
+<button *ngIf="resoluciones" type="button" class="btn btn-outline-primary btn-sm" (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+    Ocultar o Mostrar Resoluciones
+</button>
+<div class="col-xs-12" style="height:20px;"></div>
+<div id="collapseExample" [ngbCollapse]="isCollapsed">
+    <div>
+      <div>
+          <table *ngIf="resoluciones" class="table table-sm">
+              <thead>
+                <tr>
+                  <th scope="col-sm-1">Número Resolucion</th>
+                  <th scope="col-sm-1">Antecedentes</th>
+                  <th scope="col-sm-1">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let resolucion of resoluciones" >
+                  <th scope="row"><a href="#" (click)="onClickResolucion(resolucion)">{{resolucion.num.value}}</a></th>
+                  <td>{{resolucion.doc.value}}</td>
+                  <td>{{resolucion.acc.value}}</td>
+                </tr>                
+               </tbody>
+            </table>
+      </div>
+    </div>
+</div>
+
+<app-detalle-resolucion [resolucion]="selectedResolucion"></app-detalle-resolucion> 
